@@ -1,0 +1,11 @@
+@charset "UTF-8";
+
+#list {width: 766px; height: 100px; margin: auto; padding-top: 30px; background: white; text-align: center; border-top: 2px solid black; border-bottom: 2px solid black;}
+ 
+#wtitle {height: 100px; margin: auto; padding-top: 30px; background: mediumAquaMarine; text-align: center; border-bottom: 2px solid black;}
+#from {height: 35px; margin: auto; padding-top: 6px; background: lightgreen;}
+#body {height: 800px; margin: auto; background: lemonchiffon; border-bottom: 2px solid black;}
+
+.tbbg1 {background: lightgreen}
+.tbbg2 {background: mediumAquaMarine; border-top: 2px solid black;}
+.tbbg3 {background: lemonchiffon; }
