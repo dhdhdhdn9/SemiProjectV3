@@ -5,6 +5,7 @@
 	<div class = "col"><h1 class="text-info">Lorem Ipsum</h1></div>
 	<div class = "col text-right"><h1><button type="button" class="btn btn-danger" data-toggle="modal" data-target="#loginfrm">로그인</button>
 		<button type="button"  id="joinbtn" class="btn btn-primary">회원가입</button></h1></div>
+	<link rel="stylesheet" href="/css/project.css">
 
 </header>
 
@@ -21,7 +22,7 @@
 
 <!-- 로그인 폼 modal -->
 
-<div class= "modal" id="loginfrm" tabindex="-1" >
+<div class= "modal" id="login" tabindex="-1" >
 	<div class="modal-dialog">
 		<div class="modal-content">
 
