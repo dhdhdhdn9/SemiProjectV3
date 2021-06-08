@@ -398,17 +398,6 @@ Copyright © Kakao Corp. All rights reserved.
 	
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns" crossorigin="anonymous"></script>
 	
-	<script>
-	   $('#okagree').click(function() {
-	       if (
-	           !$('#agree1').is(":checked") || $('#agree2').is(":checked") == false) {
-	           alert('모든 약관의 동의 여부를 확인해주세요.');
-	       } else {
-	           location.href='/mvc/join/checkme';
-	       }
-	   })
-	
-	   $('#notagree').click(function() {location.href='/mvc/index';})
-	</script>
+
 	
 	     

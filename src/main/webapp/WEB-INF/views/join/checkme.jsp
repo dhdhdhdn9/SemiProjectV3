@@ -6,17 +6,17 @@
 	<div>
         <i class="fas fa-users fa-2x"> 회원가입</i>
     </div>
-            
+
     <hr>
 
     <div>
         <h3>가입인증</h3>
         <small class="text-muted">회원으로 가입하는 방법에는 2가지 방법이 있습니다. 아래에서 원하는 방법을 선택해주세요.<br> 입력하신 정보는 가입완료 전까지 본 사이트에 저장되지 않습니다.</small>
     </div>
-    
+
     <hr>
 
-<!--            회원가입-->
+<!-- 회원가입-->
     <div class= "card card-body bg-light" id="usefrm">
         <br>
         <h3>회원가입</h3>
@@ -26,14 +26,14 @@
 
         <div class="row">
 	        <div class="col-5 offset-1 text-warning">
-	
+
 	                <div class="form-group row">
 	                    <label for="name" class="col-form-label col-3 text-right">이름</label>
 	                    <input type="text" name="name" id="name" class="form-control col-6 border-warning">
 	                </div>
-	
+
 	                <div class="form-group row">
-	                    <label for="birth" class="col-form-label col-3 text-right ">생년월일</label>
+	                    <label for="year" class="col-form-label col-3 text-right ">생년월일</label>
 	                    <select id="year" name="year" class="form-control col-3 text-warning border-warning">
 	                        <option selected>년도</option>
 	                        <option>2021년</option>
@@ -47,16 +47,16 @@
 	                        <option>11</option>
 	                    </select>
 	                </div>
-	
+
 	                <div class="form-group row">
 	                    <label for="gender" class="col-3 text-right">성별</label>
 	                    <div class = "custom-control custom-radio">
-	                        <input type="radio" id="gmale" class="form-check-input" name="gender" value="male">
-	                        <label class="form-check-label" for="male">남성</label>
+	                        <input for="male" type="radio" id="gender" class="form-check-input" name="gender" value="male">
+	                        <label class="form-check-label">남성</label>
 	                    </div>
 	                    <div class = "custom-control custom-radio offset-1">
-	                        <input type="radio" id="fmale" class="form-check-input" name="gender" value="female">
-	                        <label class="form-check-label" for="female">여성</label>
+	                        <input for="female" type="radio" id="gender2" class="form-check-input" name="gender" value="female">
+	                        <label class="form-check-label">여성</label>
 	                    </div>
 	                </div>
 	        </div>
@@ -84,7 +84,7 @@
             <p><br></p>
 
 <!--            실명확인-->
-     <div class= "card card-body bg-light" id="usefrm">
+     <div class= "card card-body bg-light" id="userfrm">
          <br>
          <h3>실명확인 회원가입</h3>
          <p><br></p>
@@ -93,25 +93,25 @@
 	             <form name="chkfrm2" id="chkfrm2">
 	                 <div class="form-group row">
 	                     <label for="name" class="col-form-label col-3 text-right">이름</label>
-	                     <input type="text" name="name" id="name" class="form-control col-6 border-warning">
+	                     <input type="text" name="name" id="name2" class="form-control col-6 border-warning">
 	                 </div>
-	
+
 	                 <div class="form-group row">
-	                     <label for="identi" class="col-form-label col-3 text-right">주민번호</label>
-	                     <input type="text" name="idfirst" id="idfirst" class="form-control col-3 border-warning">
+	                     <label for="jumin1" class="col-form-label col-3 text-right">주민번호</label>
+	                     <input type="text" name="jumin1" id="jumin1" class="form-control col-3 border-warning">
 	                     <div class= "col-form-label text-dark ">&nbsp;&nbsp;─&nbsp;&nbsp;</div>
-	                     <input type="text" name="idfirst" id="idfirst" class="form-control col-3 border-warning">
+	                     <input type="text" name="jumin2" id="jumin2" class="form-control col-3 border-warning">
 	                 </div>
-	
+
 	                 <div class="form-group row">
 	                     <div class = "form-check offset-3 col-9">
-	                         <input class="form-check-input" type="checkbox" name="idok" value="y">
-	                         <label class="form-check-label" for="y">주민등록번호 처리에 동의합니다.</label>
+	                         <input class="form-check-input" type="checkbox" id="chkjumin" name="chkjumin" value="y">
+	                         <label class="form-check-label" for="chkjumin">주민등록번호 처리에 동의합니다.</label>
 	                     </div>
 	                 </div>
 	             </form>
 	         </div>
-	
+
 	         <div class="col text-primary font-weight-bold">
 	             <ul>
 	                 <li>실명확인 회원가입시 공개 게시판 이용이 가능합니다.</li>
@@ -131,6 +131,5 @@
          </div>
 
      </div>
-            
+
 </div>            
-            
