@@ -24,9 +24,9 @@
 	</div>
 	<hr>
 
-	<div class= "card card-body bg-light" id="usefrm">
+	<div class= "card card-body bg-light" id="usefrm1">
 		<h3>사이트 이용약관</h3>
-		<form name="agreefrm" id="agreefrm">
+		<form name="agreefrm1" id="agreefrm1">
  			<div class="form-group ">
      			<textarea rows="10" class="form-control border-danger text-danger ">
 카카오계정 약관
@@ -205,9 +205,9 @@ Copyright © Kakao Corp. All rights reserved.
 
      <p><br></p>
 
-     <div class= "card card-body bg-light" id="usefrm">
+     <div class= "card card-body bg-light" id="usefrm2">
          <h3>개인정보 수집 및 이용에 대한 안내</h3>
-         <form name="agreefrm" id="agreefrm">
+         <form name="agreefrm2" id="agreefrm2">
              <div class="form-group">
                  <textarea rows="10" class="form-control border-danger text-danger ">
 카카오계정 약관

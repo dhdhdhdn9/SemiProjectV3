@@ -40,23 +40,38 @@ public class JoinController {
 
     // 우편번호 검색
     // /join/zipcode?dong=동이름
-    // 검색 결과를 뷰페이지 없이 바로 응답으로 출력: RESTFUL 방식 (마이크로 서비스)
+    // 검색된 결과를 뷰페이지 없이 바로 응답으로 출력 : RESTful 방식 (마이크로서비스)
     // 서블릿에서 제공하는 HttpServletResponse를 이용하면
-    // 스프링의 뷰리졸버 없이 바로 응답 출력 가능
-    // 결과: 자바스크립트의 ajax를 이용해 적정히 가공한 후 폼에 출력
+    // 스프링의 뷰리졸버 없이 바로 응답을 출력할 수 있음
+    // 결과는 자바스크립트의 ajax를 이용해서 적절히 가공해서 폼에 출력
     @ResponseBody
-    @GetMapping ("/join/zipcode")
+    @GetMapping("/join/zipcode")
     public void zipcode(String dong, HttpServletResponse res) {
         try {
-            // 응답 결과의 유형은 JSON 형식으로 설정
+            // 응답결과의 유형은 JSON형식으로 설정
             res.setContentType("application/json; charset=UTF-8");
-            // 응답 결과를 뷰 없이 브라우저로 바로 출력
+            // 응답결과를 뷰없이 브라우져로 바로 출력
             res.getWriter().print( msrv.findZipcode(dong) );
         } catch (IOException e) {
             e.printStackTrace();
         }
-
     }
+
+
+    // 아이디 중복 검사
+    // /join/checkuid?uid=아이디
+    // 사용 가능: 결과 0
+    // 사용 불가: 결과 1
+    @ResponseBody
+    @GetMapping("/join/checkuid")
+    public void checkuid(String uid, HttpServletResponse res) {
+        try {
+            res.getWriter().println(msrv.checkUserid(uid));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
 
 
 }

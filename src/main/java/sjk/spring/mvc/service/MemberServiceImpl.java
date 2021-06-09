@@ -28,12 +28,12 @@ public class MemberServiceImpl implements MemberService {
     @Override
     public String findZipcode(String dong) {
         // 조회결과 출력방법 1 : csv (쉼표로 구분)
+        // sido, gugun, dong, bunji
         // 서울, 강남구, 논현동, 123번지
 
         // 조회결과 출력방법 2 : xml
         // <zip><sido>서울</sido> <gugun>강남구</gugun>
         //      <dong>논현동</dong> <bunji>123번지</bunji></zip>
-        // 단점: 코드가 길고 번거로워짐
 
         // 조회결과 출력방법 3 : json (추천)
         // {'sido':'서울', 'gugun':'강남구',
@@ -46,17 +46,19 @@ public class MemberServiceImpl implements MemberService {
         // .append("'bunji':").append("'123번지',");
         // .append("}");
 
-        // 코드를 json 형태로 결과물을 만드려면 상당히 복잡함
-        // objectMapper라는 라이브러리를 이용하면
-        // 손쉽게 Json 형식의 데이터 생성 가능
-        // wirteValueAsString: List 형식의 데이터를 JSON 형식으로 변환해줌
+        // 코드를 json형태로 결과물을 만들려면 상당히 복잡함
+        // ObjectMapper라는 라이브러리를 이용하면
+        // 손쉽게 JSON형식의 데이터를 생성할 수 있음
+        // writeValueAsString : List형식의 데이터를 JSON형식으로 변환해 줌
         ObjectMapper mapper = new ObjectMapper();
         String json = "";
+
         dong = dong + "%";
+
         try {
-            json = mapper.writeValueAsString (
+            json = mapper.writeValueAsString(
                     mdao.selectZipcode(dong)
-            );
+            ); // 제이슨 코드로 바꿔줌
         } catch (JsonProcessingException e) {
             e.printStackTrace();
         }
@@ -66,7 +68,8 @@ public class MemberServiceImpl implements MemberService {
 
     @Override
     public String checkUserid(String uid) {
-        return null;
+        return mdao.selectOneUserid(uid) + "";
+        // int로 받아야하기 때문에 ""를 붙여서 문자형으로 바꿔줌
     }
 
     @Override

@@ -29,23 +29,24 @@
 							   readonly value="${param.name}">
 		            </div><!-- 이름-->
 
-		            <div class="form-group row">
-		                <label for="jumin1" class="col-form-label col-2 text-right">주민번호</label>
-		                <input type="text" name="jumin1" id="jumin1"
-							   class="form-control col-2 border-danger"
+					<div class="form-group row">
+						<label class="col-2 col-form-label text-danger text-right" for="jumin1">
+							주민번호</label>
+						<input type="text" name="jumin1" id="jumin1"
+							   class="form-control border-danger col-2"
 							   readonly value="${param.jumin1}">
-		                <span class= "col-form-label text-dark ">&nbsp;&nbsp;&mdash;&nbsp;&nbsp;</span>
-		                <input type="text" name="jumin2" id="jumin2"
-							   class="form-control col-2 border-danger"
+						<span class="col-form-label">
+                        &nbsp;&mdash;&nbsp;</span>
+						<input type="text" name="jumin2" id="jumin2"
+							   class="form-control border-danger col-2"
 							   readonly value="${param.jumin2}">
-		            </div><!-- 주민번호-->
+					</div><!-- 주민번호-->
 
 		            <div class="form-group row">
 		                <label for="userid" class="col-form-label col-2 text-right">아이디</label>
 		                <input type="text" name="userid" id="userid"
 							   class="form-control col-3 border-danger">
-		                <span class= "col-form-label text-dark">&nbsp; 8~16 자의 영문 소문자, 숫자와 특수기호(_)만 사용할 수 있습니다.</span>
-		                <div class="col-form-label offset-2" id="idright"></div>
+		                <span id="uidmsg" class= "col-form-label text-dark">&nbsp; 8~16 자의 영문 소문자, 숫자와 특수기호(_)만 사용할 수 있습니다.</span>
 		            </div><!-- 아이디-->
 
 		            <div class="form-group row">
@@ -53,14 +54,13 @@
 		                <input type="password" name="passwd" id="passwd"
 							   class="form-control col-3 border-danger">
 		                <span class= "col-form-label text-dark">&nbsp; 6~16 자의 영문 대소문자, 숫자 및 특수문자를 사용할 수 있습니다.</span>
-		                <div class="col-form-label offset-2" id="pwright"></div>
 		            </div><!-- 비번-->
 
 		            <div class="form-group row">
 		                <label for="repasswd" class="col-form-label col-2 text-right">비밀번호 확인</label>
 		                <input type="password" name="repasswd" id="repasswd"
 							   class="form-control col-3 border-danger">
-		                <span class= "col-form-label text-dark">&nbsp; 이전 항목에서 입력했던 비밀번호를 한번 더 입력하세요</span>
+		                <span id="repwdmsg" class= "col-form-label text-dark">&nbsp; 이전 항목에서 입력했던 비밀번호를 한번 더 입력하세요</span>
 		            </div><!-- 비번확인-->
 
 		            <div class="form-group row">
@@ -106,20 +106,21 @@
 						</select>
 		            </div><!-- 이메일-->
 
-		            <div class="form-group row">
-		                <label for="hp1" class="col-form-label col-2 text-right">개인 연락처</label>
-		                <select id="hp1" name="hp1" class="form-control col-2 border-danger">
-		                    <option>-국번-</option>
-		                    <option>02</option>
-		                    <option>031</option>
-		                </select>
-		                <div class= "col-form-label text-dark ">&nbsp;&nbsp;&mdash;&nbsp;&nbsp;</div>
-		                <input type="text" name="hp2" id="hp2"
-							   class="form-control col-2 border-danger">
-		                <div class= "col-form-label text-dark">&nbsp;&nbsp;&mdash;&nbsp;&nbsp;</div>
-		                <input type="text" name="hp3" id="hp3"
-							   class="form-control col-2 border-danger">
-		            </div><!-- 전번-->
+					<div class="form-group row">
+						<label class="col-2 col-form-label text-danger text-right" for="hp1">전화번호</label>
+						<select class="form-control border-danger col-2"
+								name="hp1" id="hp1">
+							<option>-국번-</option>
+							<option>010</option>
+							<option>011</option>
+						</select>
+						<span class="col-form-label">&nbsp;&mdash;&nbsp;</span>
+						<input type="text" name="hp2" id="hp2"
+							   class="form-control border-danger col-2">
+						<span class="col-form-label">&nbsp;&mdash;&nbsp;</span>
+						<input type="text" name="hp3" id="hp3"
+							   class="form-control border-danger col-2">
+					</div><!-- 전번-->
 
 		            <div class="form-group row">
 		                <label for="g-recaptcha"

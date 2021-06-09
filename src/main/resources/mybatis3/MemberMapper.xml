@@ -10,9 +10,9 @@
     </insert>
 
     <select id="selectZipcode" statementType="PREPARED"
-            parameterType="String" resultType="sjk.spring.mvc.vo.Zipcode">
-        select * from zipcode
-            where DONG = #{dong};
+            parameterType="String"
+            resultType="sjk.spring.mvc.vo.Zipcode">
+        select * from zipcode where dong like #{dong}
     </select>
 
     <select id="checkUserid" statementType="PREPARED"
