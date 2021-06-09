@@ -88,40 +88,35 @@ function checkeqpw() {
 
 
 // joinme
-$('#joinbtn').on('click',function () {
-    if($('#userid').val() == '')
-        alert('아이디를 입력하세요!');
-    else if ($('#passwd').val() == '')
-        alert('비밀번호를 입력하세요!');
+$('#joinbtn').on('click', function() {
+    if ($('#userid').val() == '') alert('아이디를 입력하세요');
+    else if ($('#passwd').val() == '') alert('비밀번호를 입력하세요');
     else if ($('#passwd').val() != $('#repasswd').val())
         alert('비밀번호가 서로 일치하지 않습니다!');
     else if ($('#zip1').val() == '' || $('#zip2').val() == '')
-        alert('우편번호를 조회하세요!');
+        alert('우편번호를 조회해주세요!');
     else if ($('#addr1').val() == '' || $('#addr2').val() == '')
-        alert('나머지 주소를 입력하세요!');
+        alert('나머지 주소를 입력해주세요!');
     else if ($('#email1').val() == '' || $('#email2').val() == '')
-        alert('이메일을 입력하세요!');
-    else if ($('#hp1').val() == ''  || $('#hp2').val() == '' || $('#hp3').val() == '')
-        alert('연락처를 입력하세요!');
+        alert('이메일을 입력해주세요!');
+    else if ($('#tel1').val() == '' || $('#tel2').val() == '' ||
+        $('#tel3').val() == '') alert('전화번호를 입력해주세요!');
     else if (grecaptcha.getResponse() == '')
-        alert('자동 가입 방지를 해주세요!');
+        alert('자동가입 방지 확인이 필요합니다!');
     else {
-        $('#jumin').val(
-            $('#jumin1').val() + '-' + $('#jumin2').val());
-        $('#zipcode').val(
-            $('#zip1').val() + '-' + $('#zip2').val());
-        $('#email').val(
-            $('#email1').val() + '@' + $('#email2').val());
+        $('#jumin').val( $('#jumin1').val() + '-' + $('#jumin2').val() );
+        $('#zipcode').val( $('#zip1').val() + '-' + $('#zip2').val() );
+        $('#email').val( $('#email1').val() + '@' + $('#email2').val() );
         $('#phone').val(
-            $('#hp1').val() + '-' + $('#hp2').val() + '-' + $('#hp3').val());
+            $('#tel1').val() + '-' + $('#tel2').val() + '-' + $('#tel3').val() );
 
         const frm = $('#joinfrm');
-        frm.attr('action', '/join/joinok');
-        frm.attr('method', 'post');
+        frm.attr('action','/join/joinok');
+        frm.attr('method','post');
         frm.submit();
     }
-
 });
+
 
 $('#cancelbtn').on('click',function () {
     location.href= '/';
@@ -158,9 +153,9 @@ $('#findzipbtn').on('click', function() {
 
 
 // zipcode prevent enter key from dong
-$('input[type="text"]').keydown(function () {
-    if (event.keycode === 13) {
-        event.preventDefault()
+$('input[type="text"]').keydown(function() {
+    if (event.keyCode === 13) {
+        event.preventDefault();
     }
 });
 
@@ -201,3 +196,39 @@ $('#email3').on('change', function() {
         $('#email2').val(val);
     }
 });
+
+
+
+// loginbtn
+$('#loginbtn').on('click', function () {
+    let uid = $('#userid').val();
+    let pwd = $('#passwd').val();
+    if(uid== '') {
+        alert('아이디를 입력하세요!');
+    }
+    else if (pwd == '') { alert('비밀번호를 입력하세요!');
+    }
+    else {
+        const frm = $('#loginfrm');
+        frm.attr('method', 'post');
+        frm.attr('action', '/join/login');
+        frm.submit()
+    }
+});
+
+
+
+// close login modal
+$('#lgmbtn').on('click',function () {
+    $('#loginmodal').modal('hide');
+})
+
+
+
+// logoutbtn
+$('#logoutbtn').on('click', function () {
+    location.href= '/join/logout';
+});
+
+
+

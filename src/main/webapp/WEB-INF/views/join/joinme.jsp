@@ -107,20 +107,20 @@
 		            </div><!-- 이메일-->
 
 					<div class="form-group row">
-						<label class="col-2 col-form-label text-danger text-right" for="hp1">전화번호</label>
+						<label class="col-2 col-form-label text-danger text-right" for="tel1">전화번호</label>
 						<select class="form-control border-danger col-2"
-								name="hp1" id="hp1">
+								id="tel1">
 							<option>-국번-</option>
 							<option>010</option>
 							<option>011</option>
 						</select>
 						<span class="col-form-label">&nbsp;&mdash;&nbsp;</span>
-						<input type="text" name="hp2" id="hp2"
+						<input type="text" name="tel2" id="tel2"
 							   class="form-control border-danger col-2">
 						<span class="col-form-label">&nbsp;&mdash;&nbsp;</span>
-						<input type="text" name="hp3" id="hp3"
+						<input type="text" name="tel3" id="tel3"
 							   class="form-control border-danger col-2">
-					</div><!-- 전번-->
+					</div><!-- 전화번호 -->
 
 		            <div class="form-group row">
 		                <label for="g-recaptcha"
