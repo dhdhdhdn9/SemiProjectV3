@@ -2,10 +2,13 @@ package sjk.spring.mvc.Controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.ModelAndView;
 import sjk.spring.mvc.service.BoardService;
+import sjk.spring.mvc.vo.Board;
+
+import javax.servlet.http.HttpServletRequest;
 
 @Controller
 public class BoardController {
@@ -17,6 +20,19 @@ public class BoardController {
         if (cp == null) cp = "1";
         mv.setViewName("board/list.tiles");
         mv.addObject("bds", bsrv.readBoard(cp));
+        mv.addObject("bdcnt", bsrv.countBoard());
+
+        return mv;
+    }
+
+    @GetMapping("/board/view")
+    public ModelAndView view(String bdno, ModelAndView mv) {
+
+        bsrv.viewCountBoard(bdno);   // 조회수 처리
+
+        mv.setViewName("board/view.tiles");
+        mv.addObject("bd", bsrv.readOneBoard(bdno));
+
         return mv;
     }
 
@@ -25,9 +41,28 @@ public class BoardController {
         return "board/write.tiles";
     }
 
-    @GetMapping("/board/view")
-    public String view() {
-        return "board/view.tiles";
+    @PostMapping("/board/write")
+    public String writeok(Board bd) {
+        String returnPage = "redirect:/board/list";
+
+        if (bsrv.newBoard(bd))
+            System.out.println("입력완료!");
+
+        return returnPage;
+    }
+
+    // 게시판 검색 기능 구현
+    @GetMapping("/board/find")
+    public ModelAndView find(ModelAndView mv, String cp,
+                             String findtype, String findkey) {
+
+        mv.setViewName("board/list.tiles");
+        mv.addObject("bds",
+                bsrv.readBoard(cp, findtype, findkey));
+        mv.addObject("bdcnt",
+                bsrv.countBoard(findtype, findkey));
+
+        return mv;
     }
 
 

@@ -8,7 +8,7 @@
 	</div>
 	
 	<hr>
-	
+
 	<div class="row">
 	    <div class="col-5 offset-1">
 	        <div class="form-group row">
@@ -28,9 +28,9 @@
 	        <button type="button" class="btn btn-light" id="newbdbtn"><i class="fas fa-plus-circle"></i> 사진올리기</button>
 	    </div>
 	</div>
-	            
+
 	<div class="row">
-	    <div class="col-12">
+		<div class="col-10 offset-1">
 	        <ul class="list-inline moveright">
 	            <li class="list-inline-item pushdown">
 	                <div class="card cdwide">
@@ -50,7 +50,7 @@
 	<p></p>
 	        
 	<div class="row">
-	    <nav class="col-10 offset-1">
+	    <nav class="col-12 offset-1">
 	    <ul class="pagination justify-content-center ">
 	        <li class="page-item disabled"><a href="#" class="page-link">이전</a></li>
 	        <li class="page-item active"><a href="#" class="page-link">1</a></li>

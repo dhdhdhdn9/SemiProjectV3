@@ -3,7 +3,7 @@
 
 <header class="row">
 	<div class="col"><h1><a href="/"
-							style="color:black; text-decoration: none">Lorem Ipsum</a></h1></div>
+							style="color:mediumaquamarine; text-decoration: none">Lorem Ipsum</a></h1></div>
 	<div class="col text-right">
 		<c:if test="${empty UID}">
 			<h1><button type="button" class="btn btn-danger"

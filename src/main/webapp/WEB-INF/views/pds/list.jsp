@@ -28,12 +28,12 @@
 	        <button type="button" class="btn btn-light" id="newbdbtn"><i class="fas fa-plus-circle"></i> 새글쓰기</button>
 	    </div>
 	</div> <!-- 검색, 버튼-->
-	
+
 	<div class="row">
-	    <div class="col-10 offset-1">
-	        <table id="list" class="table table-striped table-hover text-center">
-	            <colgroup>
-	                <col style="width: 8%">
+		<div class="col-10 offset-1">
+			<table id="list" class="table table-striped table-hover text-center">
+				<colgroup>
+					<col style="width: 8%">
 					<col style="">
 					<col style="width: 12%">
 					<col style="width: 10%">
@@ -41,12 +41,13 @@
 					<col style="width: 8%">
 				</colgroup>
 				<thead class="bg-dark">
-					<tr style="background: mediumAquaMarine">
-						<th>번호</th><th>제목</th><th>작성자</th><th>작성일</th><th>추천</th><th>조회</th>
-					</tr>
-					<tr style="font-weight: bold; color: crimson">
-					    <th>공지</th><th><span class="badge badge-danger">Hot</span>&nbsp;<a href="view.html">Donec ut neque a nisl tincidunt mollis.</a></th><th>운영자</th><th>2021.05.21</th><th>10</th><th>1006</th>
-					</tr>
+				<tr style="background: mediumAquaMarine">
+					<th>번호</th><th>제목</th><th>작성자</th><th>작성일</th><th>추천</th><th>조회</th>
+				</tr>
+				<tr style="font-weight: bold; color: gold">
+					<th>공지</th>
+					<th><span class="badge badge-danger">Hot</span>&nbsp<a href="/board/view">Donec ut neque a nisl tincidunt mollis.</a></th><th>운영자</th><th>2021.05.21</th><th>10</th><th>1006</th>
+				</tr>
 				</thead>
 				<tbody>
 					<tr>
@@ -80,7 +81,7 @@
 	<p></p>
 	        
 	<div class="row">
-	    <nav class="col-10 offset-1">
+	    <nav class="col-12 offset-1">
 	    <ul class="pagination justify-content-center ">
 	        <li class="page-item disabled"><a href="#" class="page-link">이전</a></li>
 	        <li class="page-item active"><a href="#" class="page-link">1</a></li>

@@ -1,0 +1,11 @@
+@charset "UTF-8";
+
+.tbbg1 {background: lightgreen}
+.tbbg2 {background: mediumAquaMarine; border-top: 2px solid black;}
+.tbbg3 {background: lemonchiffon; }
+
+.pushdown {margin-top: 50px}
+
+.pushright {float: right}
+
+.bdcsize { height:550px }
