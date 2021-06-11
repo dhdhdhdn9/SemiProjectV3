@@ -2,6 +2,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <header class="row">
+
 	<div class="col"><h1><a href="/"
 							style="color:mediumaquamarine; text-decoration: none">Lorem Ipsum</a></h1></div>
 	<div class="col text-right">

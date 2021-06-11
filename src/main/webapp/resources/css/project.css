@@ -2,6 +2,20 @@
 
 #list {background: white; text-align: center; border-top: 2px solid black; border-bottom: 2px solid black;}
 
-#wtitle {background: mediumAquaMarine; text-align: center; border-bottom: 2px solid black;}
+#title {background: mediumAquaMarine; text-align: center; border-bottom: 2px solid black;}
 #from {background: lightgreen;}
 #body {background: lemonchiffon; border-bottom: 2px solid black;}
+
+.tbbg1 {background: lightgreen}
+.tbbg2 {background: mediumAquaMarine; border-top: 2px solid black;}
+.tbbg3 {background: lemonchiffon; }
+
+.cmtbg1 { background: gold; padding: 7px 0 }
+.cmtbg2 { background: darkturquoise; padding: 7px 0 }
+
+.pushdown {margin-top: 50px}
+
+.pushright {float: right}
+
+.bdcsize { height:550px }
+

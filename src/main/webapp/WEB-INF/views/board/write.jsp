@@ -6,8 +6,9 @@
 <div id = "main">
 
 	<div>
-	    <i class="fas fa-comments fa-2x">자유 게시판</i>
-	    <hr>
+		<p><br></p>
+		<i class="fas fa-comments fa-2x"> 자유 게시판</i>
+		<hr>
 	</div> <!-- 페이지 타이틀-->
 	
 	<div class="row">
