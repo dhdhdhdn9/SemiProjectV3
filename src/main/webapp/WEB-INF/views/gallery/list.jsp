@@ -15,7 +15,7 @@
 	            <select class="form-control col-4" name="findtype" id="findtype">
 	                <option value="title">제목</option>
 	                <option value="titcont">제목+내용</option>
-	                <option value="content">내용</option>
+	                <option value="contents">내용</option>
 	                <option value="userid">작성자</option>
 	            </select>
 	            &nbsp;
