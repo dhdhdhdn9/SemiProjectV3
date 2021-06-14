@@ -14,8 +14,8 @@ $('#listbdbtn').click(function () {
 
 // save board
 $('#savebdbtn').click(function () {
-    let tit = $('#wtitle').val();
-    let cont = $('#wcontents').val();
+    let tit = $('#title').val();
+    let cont = $('#contents').val();
     if (tit === '')
         alert("제목을 작성해주세요!")
     else if (cont === '')

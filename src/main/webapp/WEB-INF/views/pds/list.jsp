@@ -1,33 +1,41 @@
 <%@ page pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
-<div id = "main">
-
+<div id="main">
 	<div>
 		<p><br></p>
-	    <i class="fas fa-save fa-2x"> 자료실</i>
-	</div>
-	
-	<hr>
-	
+		<i class="fas fa-save fa-2x"> 자료실</i>
+		<hr>
+	</div><!-- 페이지 타이틀 -->
+
 	<div class="row">
-	    <div class="col-5 offset-1">
-	        <div class="form-group row">
-	            <select class="form-control col-4" name="findtype" id="findtype">
-	                <option value="title">제목</option>
-	                <option value="titcont">제목+내용</option>
-	                <option value="contents">내용</option>
-	                <option value="userid">작성자</option>
-	            </select>
-	            &nbsp;
-	            <input type="text" name="findkey" id="findkey" class="form-control col-4 border-success">
-	            &nbsp;
-	            <button type="button" id="findbtn" class="btn btn-success"><i class="fas fa-search">&nbsp;검색</i></button>
-	        </div>
-	    </div>
-	    <div class="col-5 text-right">
-	        <button type="button" class="btn btn-light" id="newbdbtn"><i class="fas fa-plus-circle"></i> 새글쓰기</button>
-	    </div>
-	</div> <!-- 검색, 버튼-->
+		<div class="col-5 offset-1">
+			<div class="form-group row">
+				<select class="form-control col-4" name="findtype" id="findtype">
+					<option value="title">제목</option>
+					<option value="titcont">제목+내용</option>
+					<option value="contents">내용</option>
+					<option value="userid">작성자</option>
+				</select>
+				&nbsp;
+				<input type="text" name="findkey" id="findkey"
+					   class="form-control col-4 border-success"
+					   value="${param.findkey}">
+				&nbsp;
+				<button type="button" id="findbtn" class="btn btn-success">
+					<i class="fas fa-search">&nbsp;검색</i></button>
+			</div>
+		</div>
+		<div class="col-5 text-right">
+			<c:if test="${not empty UID}">
+				<button type="button" class="btn btn-light" id="newbdbtn">
+					<i class="fas fa-plus-circle"></i> 새글쓰기</button>
+			</c:if>
+		</div>
+	</div><!-- 검색, 버튼 -->
+
 
 	<div class="row">
 		<div class="col-10 offset-1">
@@ -46,62 +54,34 @@
 				</tr>
 				<tr style="font-weight: bold; color: gold">
 					<th>공지</th>
-					<th><span class="badge badge-danger">Hot</span>&nbsp<a href="/board/view">Donec ut neque a nisl tincidunt mollis.</a></th><th>운영자</th><th>2021.05.21</th><th>10</th><th>1006</th>
+					<th><span class="badge badge-danger">Hot</span>
+						&nbsp<a href="/pds/view">Donec ut neque a nisl tincidunt mollis.</a></th>
+					<th>운영자</th><th>2021.05.21</th><th>10</th><th>1006</th>
 				</tr>
 				</thead>
 				<tbody>
+
+
+				<c:forEach var="p" items="${pds}">
 					<tr>
-						<script>
-							let result = '';
-							for(let i = 1;i <= 3; ++i) {
-							    result +=
-							        "<tr><td>" + i + "</td><td style='color: dodgerblue'>Sed malesuada tincidunt odio et semper.</td><td>siestageek</td><td>2021-05-21</td><td>10</td><td>128</td></tr>";
-							}
-							for(let i = 4;i <= 4; ++i) {
-							    result +=
-							        "<tr><td>" + i + "</td><td style='color: dodgerblue'></a>Sed malesuada tincidunt odio et semper. <span class='badge badge-danger'>Hot</span></td><td>siestageek</td><td>2021-05-21</td><td>10</td><td>1011</td></tr>";
-							}
-							for(let i = 5;i <= 6; ++i) {
-							    result +=
-							        "<tr><td>" + i + "</td><td style='color: dodgerblue'>Sed malesuada tincidunt odio et semper.</td><td>siestageek</td><td>2021-05-08</td><td>10</td><td>128</td></tr>";
-							}
-							for(let i = 7;i <= 10; ++i) {
-							    result +=
-							        "<tr><td>" + i + "</td><td>Sed malesuada tincidunt odio et semper.</td><td>siestageek</td><td>2021-05-01</td><td>10</td><td>777</td></tr>";
-							}
-							
-							document.write(result);
-						</script>
-	              	</tr>
-	            </tbody>
-	        </table>
-	    </div>
+						<td>${p.pno}</td>
+						<td><a href="/pds/view?pno=${p.pno}">${p.title}</a></td>
+						<td>${p.userid}</td>
+						<td>${fn:substring(p.regdate,0,10)}</td>
+						<td>${p.thumbup}</td>
+						<td>${p.views}</td>
+						<c:set var="snum" value="${snum-1}"/>
+					</tr>
+				</c:forEach>
+
+				</tbody>
+			</table>
+		</div>
 	</div>
-	
-	<p></p>
-	        
+
 	<div class="row">
-	    <nav class="col-12 offset-1">
-	    <ul class="pagination justify-content-center ">
-	        <li class="page-item disabled"><a href="#" class="page-link">이전</a></li>
-	        <li class="page-item active"><a href="#" class="page-link">1</a></li>
-	        <li class="page-item"><a href="#" class="page-link">2</a></li>
-	        <li class="page-item"><a href="#" class="page-link">3</a></li>
-	        <li class="page-item"><a href="#" class="page-link">4</a></li>
-	        <li class="page-item"><a href="#" class="page-link">5</a></li>
-	        <li class="page-item"><a href="#" class="page-link">6</a></li>
-	        <li class="page-item "><a href="#" class="page-link">7</a></li>
-	        <li class="page-item"><a href="#" class="page-link">8</a></li>
-	        <li class="page-item"><a href="#" class="page-link">9</a></li>
-	        <li class="page-item"><a href="#" class="page-link">10</a></li>
-	        <li class="page-item"><a href="#" class="page-link">다음</a></li>
-	    </ul>
-	    </nav>
-	</div>
-	
-</div>	
+		<div class="col-12">
+		</div>
+	</div><!-- 페이지네이션  -->
 
-
-<script>
-    $('#newbdbtn').click(function() {location.href='/mvc/pds/list';})
-</script>
+</div>

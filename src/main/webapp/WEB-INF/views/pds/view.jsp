@@ -1,13 +1,30 @@
 <%@ page pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+
+<%-- 첨부파일 아이콘 선택 --%>
+<c:set var="atticon1" value="${p.ftype1}" />
+<c:if test="${p.ftype1 ne 'zip' and p.ftype1 ne 'jpg' and p.ftype1 ne 'txt'}">
+	<c:set var="atticon1" value="file" />
+</c:if>
+
+<c:set var="atticon2" value="${p.ftype2}" />
+<c:if test="${p.ftype2 ne 'zip' and p.ftype2 ne 'jpg' and p.ftype2 ne 'txt'}">
+	<c:set var="atticon2" value="file" />
+</c:if>
+
+<c:set var="atticon3" value="${p.ftype3}" />
+<c:if test="${p.ftype3 ne 'zip' and p.ftype3 ne 'jpg' and p.ftype3 ne 'txt'}">
+	<c:set var="atticon3" value="file" />
+</c:if>
+
 
 <div id = "main">
 
 	<div>
-	
 		<p><br></p>
 	    <i class="fas fa-save fa-2x"> 자료실</i>
 	    <hr>
-	    
 	</div> 
 	            
 	<div>
@@ -26,30 +43,31 @@
 	
 		<table class="table col-10 offset-1">
 		    <tr class="tbbg1 text-center">
-		        <th colspan="2"><h2>Sed suscipit id mauris sit amet scelerisque.</h2></th>
+		        <th colspan="2"><h2>${p.title}</h2></th>
 		    </tr>
 		    <tr class="tbbg2">
-		        <td style="width: 50%">geek</td>
-		        <td class="text-right">2021-05.21 11:11:11 / 22 / 33</td>
+		        <td style="width: 50%">${p.userid}</td>
+		        <td class="text-right">${p.regdate} / ${p.thumbup} / ${p.views}</td>
 		    </tr>
 			<tr class="tbbg3">
-				<td colspan="2">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque nec arcu porttitor nunc lacinia vehicula et at purus. Ut laoreet finibus turpis, mattis ultricies ipsum. Proin imperdiet justo quis enim tincidunt, sit amet rutrum eros pulvinar. Sed non ligula sed orci laoreet maximus ultricies vel quam. Praesent nec posuere ipsum. Etiam in laoreet nunc. Phasellus arcu sem, tristique non sapien sodales, scelerisque feugiat nulla. Sed euismod ex eu risus pulvinar, vel gravida est facilisis.
-		
-		Donec egestas egestas sapien, eget accumsan augue tincidunt ut. Nunc fermentum eu odio vel congue. In hac habitasse platea dictumst. Phasellus non tortor feugiat, sollicitudin nunc quis, consequat velit. Etiam in massa sit amet felis maximus iaculis nec vitae odio. Pellentesque lorem tortor, fermentum at diam in, malesuada porttitor est. Nullam fringilla est sit amet finibus sodales. Phasellus vestibulum tristique dictum.
-		
-		Aenean ipsum tortor, rutrum at euismod vel, sagittis non arcu. Vivamus vulputate rutrum tellus non egestas. Nam suscipit, lectus non mattis aliquet, tortor libero congue quam, a feugiat tellus libero id justo. Sed interdum id eros at luctus. Vivamus luctus risus ante, a cursus est tempus eget. Pellentesque gravida gravida nulla, sit amet eleifend justo. Fusce purus leo, porta vitae luctus eget, efficitur sed ex. Sed vel ex id augue eleifend viverra ac non enim. Nullam libero felis, consequat id quam in, rhoncus euismod tortor. Quisque aliquet lorem a erat ornare rhoncus. Quisque quis nibh diam. Nullam consectetur diam et iaculis vehicula. Interdum et malesuada fames ac ante ipsum primis in faucibus.
-		
-		Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Quisque hendrerit id enim ac gravida. Pellentesque placerat lacus et tristique imperdiet. Integer eu dolor nunc. Etiam semper nec sem sit amet tristique. Morbi nec varius eros. Nulla mattis enim ac nisl pulvinar mollis. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vivamus vel lacinia diam. Donec pulvinar velit nibh, ut tempus neque finibus vel. Donec elit odio, varius nec urna ut, eleifend gravida enim.</td>
+				<td colspan="2">${p.contents}</td>
 			</tr> <!-- 게시 내용-->
 		    <tr>
-		        <td colspan="2"> 첨부1 <img src="/img/zip.png" width="20px">&nbsp;homework.zip (123kb, 10회 다운로드 함)</td>
+		        <td colspan="2" class="tbbg4 patxt"> 첨부1
+					<img src="/img/${atticon1}.png" width="24px"/>&nbsp;${p.fname1} (${p.fsize1}KB, ${p.fdown1}회 다운로드 함)</td>
 		    </tr>
-		    <tr>
-		        <td colspan="2"> 첨부2 <img src="/img/txt.png" width="20px">&nbsp;homework.txt (456kb, 25회 다운로드 함)</td>
-		    </tr>
-		    <tr>
-		        <td colspan="2"> 첨부3 <img src="/img/png.png" width="20px">&nbsp;homework.png (789kb, 55회 다운로드 함)</td>
-		    </tr>
+			<c:if test="${p.fname2 ne '-'}">
+				<tr>
+					<td colspan="2" class="tbbg4 patxt"> 첨부2
+						<img src="/img/${atticon2}.png" width="24px"/> ${p.fname2} (${p.fsize2}KB, ${p.fdown2}회 다운로드 함)</td>
+				</tr>
+			</c:if>
+			<c:if test="${p.fname3 ne '-'}">
+				<tr>
+					<td colspan="2" class="tbbg4 patxt"> 첨부3
+						<img src="/img/${atticon3}.png" width="24px"/>&nbsp;${p.fname3} (${p.fsize3}KB, ${p.fdown3}회 다운로드 함)</td>
+				</tr>
+			</c:if>
 		</table> <!-- 본문-->
 	
 	    <div>
@@ -59,7 +77,8 @@
 		            <button type="button" class="btn btn-danger"><i class="fas fa-trash-alt"></i> 삭제하기</button>
 		        </div>
 		        <div class="col-5 text-right">
-		            <button type="button" class="btn btn-light"><i class="fas fa-list"> 목록으로</i></button>
+					<button type="button" class="btn btn-light" id="listpdsbtn">
+						<i class="fas fa-list" ></i> 목록으로</button>
 		        </div>
 		    </div>
 		    <div class="row"></div>

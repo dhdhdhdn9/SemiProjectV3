@@ -25,8 +25,8 @@
 	<div class="card card-body bg-light col-10 offset-1">
 	    <form name="boardfrm" id="boardfrm">
 	        <div class="form-group row">
-	            <label for="wtitle" class="col-form-label col-2 text-right text-success">제목</label>
-	            <input type="text" name="title" id="wtitle" class="form-control col-9 border-success">
+	            <label for="title" class="col-form-label col-2 text-right text-success">제목</label>
+	            <input type="text" name="title" id="title" class="form-control col-9 border-success">
 	        </div>
 	        <div class="form-group row">
 	            <label for="userid" class="col-form-label col-2 text-right text-success">작성자</label>
@@ -35,8 +35,8 @@
 					   value="${UID}" readonly>
 	        </div>
 	        <div class="form-group row">
-	            <label for="wcontents" class="col-form-label col-2 text-right text-success">본문내용</label>
-	            <textarea type="text" name="contents" id="wcontents" rows="15" class="form-control col-9 border-success"></textarea>
+	            <label for="contents" class="col-form-label col-2 text-right text-success">본문내용</label>
+	            <textarea type="text" name="contents" id="contents" rows="15" class="form-control col-9 border-success"></textarea>
 	        </div>
 	        <div class="form-group row">
 	            <label for="userid" class="col-form-label col-2 text-right text-success">자동입력방지</label>
