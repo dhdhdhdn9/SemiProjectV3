@@ -61,8 +61,10 @@
 		        <div class="col-5 offset-1" >
 <%--					자신이 작성한 글에 대해서만 수정/삭제 버튼이 표시되어야 한다--%>
 					<c:if test="${not empty UID and UID eq bd.userid}">
-						<button type="button" class="btn btn-warning"><i class="fas fa-edit"></i> 수정하기</button>
-						<button type="button" class="btn btn-danger"><i class="fas fa-trash-alt"></i> 삭제하기</button>
+						<button type="button" class="btn btn-warning">
+							<i class="fas fa-edit"></i> 수정하기</button>
+						<button type="button" class="btn btn-danger">
+							<i class="fas fa-trash-alt"></i> 삭제하기</button>
 					</c:if>
 		        </div>
 		        <div class="col-5 text-right">

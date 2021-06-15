@@ -30,7 +30,7 @@
 		</div>
 		<div class="col-5 text-right">
 			<c:if test="${not empty UID}">
-				<button type="button" class="btn btn-light" id="newbdbtn">
+				<button type="button" class="btn btn-light" id="newpdsbtn">
 					<i class="fas fa-plus-circle"></i> 새글쓰기</button>
 			</c:if>
 		</div>

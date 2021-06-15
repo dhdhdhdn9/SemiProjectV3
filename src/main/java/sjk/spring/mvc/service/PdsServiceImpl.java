@@ -10,7 +10,9 @@ import sjk.spring.mvc.vo.Pds;
 
 import java.io.File;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @Service("psrv")
 public class PdsServiceImpl implements PdsService{
@@ -57,7 +59,7 @@ public class PdsServiceImpl implements PdsService{
             p.setFsize3(files.get(2).split("[/]")[1]); // 파일 크기
             p.setFtype3(files.get(2).split("[/]")[2]); // 파일 종류
 
-            //생ㅇ성한  uuid도 저장
+            //생성한  uuid도 저장
             p.setUuid(uuid);
 
             boolean isInserted = false;
@@ -84,11 +86,51 @@ public class PdsServiceImpl implements PdsService{
 
     @Override
     public Pds readOneFname(String pno, String order) {
-        return null;
+        Map<String, String> param = new HashMap<>();
+        param.put("order", "fname" + order);
+        param.put("pno", pno);
+        return pdao.selectOneFname(param);
     }
+
 
     @Override
     public boolean downCountPds(String pno, String order) {
-        return false;
+        boolean isupdated = false;
+
+        Map<String, String> param = new HashMap<>();
+        param.put("order", "fdown" + order);
+        param.put("pno", pno);
+
+        if (pdao.downCountPds(param) > 0) isupdated = true;
+        return isupdated;
+    }
+
+    @Override
+    public boolean viewCountPds(String pno) {
+        boolean isupdated = false;
+        if (pdao.viewCountPds(pno) > 0) isupdated = true;
+        return isupdated;
+    }
+
+    @Override
+    public void modifyRecmd(String pno) {
+        pdao.updateRecmd(pno);
+    }
+
+    @Override
+    public String readPrvPno(String pno) {
+        return pdao.selectPrvPno(pno);
+    }
+
+    @Override
+    public String readNxtPno(String pno) {
+        return pdao.selectNxtPno(pno);
+    }
+
+    @Override
+    public Pds removePds(String pno) {
+        Pds p = pdao.selectOnePds(pno); // 삭제하기 전 삭제될 게시글에 있는 파일 정보 전부 가져오기
+        pdao.deletePds(pno); // 파일 정보만 전부 빼낸 후 게시글만 삭제
+        return p; // 빼놓았던 파일 정보 값을 돌려보냄
     }
 }

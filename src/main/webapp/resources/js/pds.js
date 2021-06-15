@@ -25,3 +25,30 @@ $('#newpds').click( function() {
     frm.submit();
   }
 })
+
+
+// recommand
+$('#pdthumbtn').click(function () {
+  let tpno = $('#pno').val();
+  location.href = '/pds/recommand?pno=' + tpno;
+  alert('추천이 완료되었습니다.')
+
+})
+
+
+// prevbtn
+$('#pdprvbtn').click(function () {
+  location.href='/pds/prev?pno=' + $('#pno').val()
+})
+
+
+// nextbtn
+$('#pdnxtbtn').click(function () {
+  location.href='/pds/next?pno=' + $('#pno').val()
+})
+
+
+// rmvbtn
+$('#pdrmvbtn').click(function () {
+  location.href='/pds/pdrmv?pno=' + $('#pno').val()
+})

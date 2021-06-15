@@ -8,9 +8,11 @@ import org.apache.commons.fileupload.servlet.ServletFileUpload;
 import org.apache.commons.fileupload.servlet.ServletRequestContext;
 import org.springframework.stereotype.Component;
 import org.springframework.web.multipart.MultipartFile;
+import sjk.spring.mvc.vo.Pds;
 
 import javax.servlet.http.HttpServletRequest;
-import java.io.File;
+import javax.servlet.http.HttpServletResponse;
+import java.io.*;
 import java.text.SimpleDateFormat;
 import java.util.*;
 
@@ -139,11 +141,11 @@ public class FileUpDownUtil {
         } catch (Exception ex) {
             ex.printStackTrace();
         }
-
+        // 용량 제한
         return ofname + "/" + (mf.getSize() / 1024) + "/" + ftype;
     }
 
-    // 겹치지 않는 파일
+    // 겹치지 않는 파일 만들기
     public  String makeUUID() {
         String fmt = "yyyyMMddHHmmss";
         SimpleDateFormat sdf = new SimpleDateFormat(fmt);
@@ -151,4 +153,114 @@ public class FileUpDownUtil {
     }
 
 
+    // 다운로드 처리 메소드
+    public void procDownload(String fname, String uuid,
+                             HttpServletResponse res) {
+        // 1. 다운로드할 파일이름 조합
+        int pos = fname.lastIndexOf("."); // 점의 위치 알아내서
+        String fName= fname.substring(0, pos) + uuid +
+                "." + fname.substring(pos+1);
+        // 2. HTTP 응답을 위해 stream 관련 변수 선언
+        InputStream is = null;
+        OutputStream os = null;
+        File f = null;
+        try { // 그냥 넘어가도 될지에 대한 판단
+            boolean skip = false;
+
+            // 다운로드할 파일의 실제 위칙 파악하고
+            // 파일의 내용을 stream으로 미리 읽어줌
+            try {
+                f = new File(uploadPath, fName);    // 새로운 파일명
+                is = new FileInputStream(f);
+            } catch (Exception ex) { // 파일이 존재하지 않으면
+                skip = true;
+                }
+
+            // 3. HTTP 응답을 위한 준비 작업
+            res.reset(); // 초기화
+            res.setContentType("application/octet-stream");
+            // 보내는 응답의 유형 지정
+            // 응답 스트림의 내용은 이전 형태로 구성되어있음
+            res.setHeader("Content-Description", "FileDownload");
+            // 컨텐츠 구성을 알려줌
+            // 다운로드를 위해 임의로 작성함
+
+            if (!skip) { // 다운로드할 파일이 존재한다면 실제 파일을 읽어서 불러옴
+                fname = new String(fname.getBytes("UTF-8"),
+                        "iso-8859-1");
+                // 파일명이 한글일 경우 제대로 표시할 수 있도록 utf-8 변환
+                res.setHeader("Content-Disposition",
+                        "attachment; filename=\"" + fname + "\"");
+                // 파일 이름
+                res.setHeader("Content-Type",
+                        "application/octet-stream; charset=utf-8");
+                // 파일 확장자
+                res.setHeader("Content-Length", f.length() + "");
+                // 링크 클릭 시 다운로드 대화상자에 표시할 내용 정의
+
+                // 4번을 위해 1~3번의 과정을 거침
+                // 4. HTTP 응답으로 파일 내용을 스트림으로 전송함
+                os = res.getOutputStream();
+                byte b[] = new byte[(int) f.length()];
+                // 파일 내용을 byte 배열에 저장
+                int cnt = 0;
+
+                while ((cnt = is.read(b)) > 0)
+                    os.write(b, 0, cnt);
+                // 1byte 씩 http 응답 스트림으로 보냄
+
+            } else { // 다운로드 파일이 없다면
+                res.setContentType("text/html; charset=utf-8");
+                PrintWriter out = res.getWriter();
+                out.print("<h1>다운로드할 파일이 존재하지 않습니다</h1>");
+            } // else
+
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        } finally {
+            if(os != null) {
+                try { os.close(); } catch (IOException e) { }
+            }
+            if(is != null) {
+                try { is.close(); } catch (IOException e) { }
+            }
+        } // finally
+    } // public void
+
+
+    public void removeAttach(Pds p) {
+        // 삭제할 파일명 재조립 1 (1번 파일 가져옴)
+
+        int pos = p.getFname1().lastIndexOf(".");
+        String fname = p.getFname1().substring(0, pos)
+                + p.getUuid() + "." + p.getFname1().substring(pos+1);
+        File f = new File(uploadPath, fname);
+        f.delete();
+
+        // 삭제할 파일명 재조립 2 (2번 파일 가져옴)
+        try {
+            pos = p.getFname2().lastIndexOf(".");
+            fname = p.getFname2().substring(0, pos)
+                    + p.getUuid() + "." + p.getFname2().substring(pos+1);
+
+            f = new File(uploadPath, fname);
+            f.delete();
+            f = new File(uploadPath, fname);
+            f.delete();
+        } catch (Exception ex) {}
+
+        // 삭제할 파일명 재조립 3 (3번 파일 가져옴)
+        try {
+            pos = p.getFname3().lastIndexOf(".");
+            fname = p.getFname3().substring(0, pos)
+                    + p.getUuid() + "." + p.getFname3().substring(pos+1);
+            f = new File(uploadPath, fname);
+            f.delete();
+        } catch (Exception ex) {}
+
+
+        // 재조립된 파일명들을 하나씩 삭제
+
+
+    }
 }
