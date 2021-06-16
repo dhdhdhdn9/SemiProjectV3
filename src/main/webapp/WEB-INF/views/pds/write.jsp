@@ -15,8 +15,8 @@
 	        <h3><i class="fas fa-plus-circle"> 새글쓰기</i></h3>
 	    </div>
 	    <div class="col-5 text-right">
-	        <button type="button" class="btn btn-light">
-				<i class="fas fa-list"></i> 목록으로</button>
+			<button type="button" class="btn btn-light" id="listpdsbtn">
+				<i class="fas fa-list" ></i> 목록으로</button>
 	    </div>
 	</div>
 	

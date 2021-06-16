@@ -1,4 +1,11 @@
 <%@ page pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+
+<c:set var="fnames" value="${fn:split(g.fnames, '/' )}" />
+<c:set var="fsizes" value="${fn:split(g.fsizes, '/' )}" />
+<c:set var="baseURL" value="http://localhost/cdn/"/>
 
 <div id = "main">
 
@@ -23,37 +30,43 @@
 	
 	    <table class="table col-10 offset-1">
 	        <tr class="tbbg1 text-center">
-	            <th colspan="2"><h2>Praesent tellus est.</h2></th>
+	            <th colspan="2"><h2>${g.title}</h2></th>
 	        </tr>
 	        <tr class="tbbg2">
-	            <td style="width: 50%">geek</td>
-	            <td class="text-right">2021-05.21 11:11:11 / 444 / 65</td>
+	            <td style="width: 50%; text-align: left">${g.userid}</td>
+	            <td class="text-right">${g.regdate} / ${g.views} / ${g.thumbup}</td>
 	        </tr>
-	        <tr class="tbbg3">
-	            <td colspan="2">
-	                <div><img src="/img/ditto.png" class="img-fluid"></div>
-	                <div><img src="/img/dittobackground.jpg" class="img-fluid"></div>
-	            </td>
-	        </tr> <!-- 게시 내용-->
-	        <tr>
-	            <td colspan="2"><img src="/img/png.png" width="20px">&nbsp;homework.png (123kb)</td>
-	        </tr>
-	        <tr>
-	            <td colspan="2"><img src="/img/jpg.png" width="20px">&nbsp;homework.jpg (456kb)</td>
-	        </tr>
-	        <tr>
-	            <td colspan="2"><img src="/img/png.png" width="20px">&nbsp;homework.png (789kb)</td>
-	        </tr>
+	        <tr class="tbbg3"><td colspan="2">
+	                <c:forEach var="f" items="${fnames}">
+					<c:set var="pos" value="${fn:indexOf(f, '.')}" />
+					<c:set var="fname" value="${fn:substring(f, 0, pos)}" />
+					<c:set var="fext" value="${fn:substring(f, pos+1, fn:length(f))}" />
+					<div>
+						<img src="${baseURL}${fname}${g.uuid}.${fext}" class="img-fluid">
+					</div>
+					</c:forEach>
+	        </td></tr> <!-- 본문-->
+			<!-- 저장된 것을 /로 구분-->
+			<c:forEach begin="0" end="${fn:length(fnames) - 1}" var="i">
+				<tr> <!-- 첨부파일 목록 -->
+					<td colspan="2" class="tbbg4">
+						<img src="/img/png.png" width="20px">
+						${fnames[i]} (${fsizes[i]}kb)</td>
+				</tr>
+			</c:forEach>
 	    </table> <!-- 본문-->
 	
 	    <div>
 	        <div class="row">
 	            <div class="col-5 offset-1" >
-	                <button type="button" class="btn btn-warning"><i class="fas fa-edit"></i> 수정하기</button>
-	                <button type="button" class="btn btn-danger"><i class="fas fa-trash-alt"></i> 삭제하기</button>
+	                <button type="button" class="btn btn-warning">
+                        <i class="fas fa-edit"></i> 수정하기</button>
+	                <button type="button" class="btn btn-danger">
+						<i class="fas fa-trash-alt"></i> 삭제하기</button>
 	            </div>
 	            <div class="col-5 text-right">
-	                <button type="button" class="btn btn-light"><i class="fas fa-list"> 목록으로</i></button>
+	                <button type="button" class="btn btn-light">
+						<i class="fas fa-list"> 목록으로</i></button>
 	            </div>
 	        </div>
 	        <div class="row"></div>
@@ -133,4 +146,4 @@
 		</div> <!-- 댓글 작성창-->
 	</div> <!-- 댓글-->
 	
-</div>	
+</div>

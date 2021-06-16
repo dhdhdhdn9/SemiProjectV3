@@ -5,8 +5,9 @@
 <div id = "main">
 
 	<div>
+		<p><br></p>
 		<i class="fas fa-image fa-2x"> 갤러리</i>
-	    <hr>
+		<hr>
 	</div> <!-- 페이지 타이틀-->
 	
 	<div class="row">
@@ -14,45 +15,62 @@
 	        <h3><i class="fas fa-plus-circle"> 새글쓰기</i></h3>
 	    </div>
 	    <div class="col-5 text-right">
-	        <button type="button" class="btn btn-light"><i class="fas fa-list"></i> 목록으로</button>
+			<button type="button" class="btn btn-light" id="listgalbtn">
+				<i class="fas fa-list" ></i> 목록으로</button>
 	    </div>
 	</div>
 	
 	<div class="card card-body bg-light col-10 offset-1">
-	    <form name="boardfrm" id="boardfrm">
+	    <form name="galfrm" id="galfrm">
 	        <div class="form-group row">
-	            <label for="title" class="col-form-label col-2 text-right text-success">제목</label>
+	            <label for="title"
+					   class="col-form-label col-2 text-right text-success">
+					   제목</label>
 	            <input type="text" name="title" id="title" class="form-control col-9 border-success">
 	        </div>
 	        <div class="form-group row">
-	            <label for="userid" class="col-form-label col-2 text-right text-success">작성자</label>
-	            <input type="text" name="userid" id="userid" class="form-control col-2 border-success" readonly>
+	            <label for="userid"
+					   class="col-form-label col-2 text-right text-success">
+					   작성자</label>
+	            <input type="text" name="userid" id="userid"
+					   class="form-control col-2 border-success"
+					   readonly value="${UID}">
 	        </div>
 	        <div class="form-group row">
-	            <label for="contents" class="col-form-label col-2 text-right text-success">본문내용</label>
-	            <textarea type="text" name="contents" id="contents" rows="15" class="form-control col-9 border-success"></textarea>
+	            <label for="contents"
+					   class="col-form-label col-2 text-right text-success">
+					   본문내용</label>
+	            <textarea type="text" name="contents" id="contents" rows="15"
+						  class="form-control col-9 border-success"></textarea>
 	        </div>
 	        <div class="form-group row">
 	            <label for="file1" class="col-form-label col-2 text-right text-success">파일첨부</label>
 	            <div class="custom-file col-9">
-	                <input type="file" name="file" id="file1" class="custom-file-input ">
-	                <label class="custom-file-label border-success">첨부할 파일을 선택하세요</label>
+	                <input type="file" name="img" id="file1"
+						   class="custom-file-input ">
+	                <label class="custom-file-label border-success">
+						   첨부할 파일을 선택하세요</label>
 	            </div>
 	        </div>
 	        <div class="form-group row">
 	            <div class="custom-file col-9 offset-2">
-	                <input type="file" name="file" id="file2" class="custom-file-input ">
-	                <label class="custom-file-label border-success">첨부할 파일을 선택하세요</label>
+	                <input type="file" name="img" id="file2"
+						   class="custom-file-input ">
+	                <label class="custom-file-label border-success">
+						   첨부할 파일을 선택하세요</label>
 	            </div>
 	        </div>
 	        <div class="form-group row">
 	            <div class="custom-file col-9 offset-2">
-	                <input type="file" name="file" id="file3" class="custom-file-input ">
-	                <label class="custom-file-label border-success">첨부할 파일을 선택하세요</label>
+	                <input type="file" name="img" id="file3"
+						   class="custom-file-input ">
+	                <label class="custom-file-label border-success">
+						   첨부할 파일을 선택하세요</label>
 	            </div>
 	        </div>
 	        <div class="form-group row">
-	            <label for="userid" class="col-form-label col-2 text-right text-success">자동입력방지</label>
+	            <label for="userid" class="col-form-label col-2 text-right text-success">
+					자동입력방지</label>
 	            <div class="g-recaptcha"
 	            	data-sitekey="6LdtIwgbAAAAAAfVQKZ16AhH9qNWiDmxGLX6u2Yb"></div>
 	            <input type="hidden" id="g-recaptcha" name="g-recaptcha"/>
@@ -60,8 +78,10 @@
 	        <div class="form-group row">
 	            <hr class="col-10">
 	            <div class="col-12 text-center">
-	            <button type="button" class="btn btn-primary"><i class="fas fa-check-circle"></i> 입력완료</button>
-	            <button type="button" class="btn btn-danger"><i class="fas fa-times"></i> 다시입력</button>
+	            <button type="button" class="btn btn-primary" id="newgal">
+					<i class="fas fa-check-circle"></i> 입력완료</button>
+	            <button type="reset" class="btn btn-danger">
+					<i class="fas fa-times"></i> 다시입력</button>
 	        </div>
 	        </div>
 	    </form>
